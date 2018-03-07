@@ -1,0 +1,291 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Huiles</title>
+    <style>
+        .DG_th {
+            cursor: pointer;
+            cursor: move;
+        }
+        div a {
+            color: white;
+            text-decoration: none;
+            padding: 20px;
+                
+        }
+        div ul li a:hover {
+            text-decoration: none;  
+            
+        }
+        #TitrePage {
+            background-color: #116b7e;
+            color: white;
+            font-size: 20px;
+            position: absolute;
+            top:10px;           
+            width: 100%;
+            left: 20px;
+            height: 40px;
+            text-align: center;
+            padding: 5px;
+            border-radius: 5px;
+            border-left: 25px solid #193648;
+            border-right: 25px solid #193648;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <h1 id="TitrePage">Gestion Huiles</h1>
+
+        <script>
+        var DG_Definition
+            = [
+                { "ColName": "IdHuiles", "Width": 50, "Visible": true, "ColumnHeader": "IdHuiles" },
+                { "ColName": "Nom", "Width": 150, "Visible": true, "ColumnHeader": "Nom" },
+                { "ColName": "CodeAdr", "Width": 200, "Visible": true, "ColumnHeader": "CodeAdr" },
+                { "ColName": "Fabricant", "Width": 200, "Visible": true, "ColumnHeader": "Fabricant" },
+                /*{ "ColName": "NormeMIL", "Width": 200, "Visible": true, "ColumnHeader": "NormeMIL" },
+                { "ColName": "NormeAIR", "Width": 200, "Visible": true, "ColumnHeader": "NormeAIR" },
+                { "ColName": "NormeDTD", "Width": 200, "Visible": true, "ColumnHeader": "NormeDTD" },
+                { "ColName": "NormeOTAN", "Width": 200, "Visible": true, "ColumnHeader": "NormeOTAN" },
+                { "ColName": "NormeDivers", "Width": 200, "Visible": true, "ColumnHeader": "NormeDivers" },
+                { "ColName": "TempLimMax", "Width": 200, "Visible": true, "ColumnHeader": "TempLimMax" },
+                { "ColName": "TempLimMin", "Width": 200, "Visible": true, "ColumnHeader": "TempLimMin" },
+                { "ColName": "TempRecomMax", "Width": 200, "Visible": true, "ColumnHeader": "TempRecomMax" },
+                { "ColName": "TempRecomMin", "Width": 200, "Visible": true, "ColumnHeader": "TempRecomMin" },
+                { "ColName": "BaseHuile1", "Width": 200, "Visible": true, "ColumnHeader": "BaseHuile1" },
+                { "ColName": "BaseHuile2", "Width": 200, "Visible": true, "ColumnHeader": "BaseHuile2" },
+                { "ColName": "BaseHuile3", "Width": 200, "Visible": true, "ColumnHeader": "BaseHuile3" },
+                { "ColName": "BaseEpaiss1", "Width": 200, "Visible": true, "ColumnHeader": "BaseEpaiss1" },
+                { "ColName": "BaseEpaiss2", "Width": 200, "Visible": true, "ColumnHeader": "BaseEpaiss2" },
+                { "ColName": "BaseEpaiss3", "Width": 200, "Visible": true, "ColumnHeader": "BaseEpaiss3" },
+                { "ColName": "BaseAdditif1", "Width": 200, "Visible": true, "ColumnHeader": "BaseAdditif1" },
+                { "ColName": "BaseAdditif2", "Width": 200, "Visible": true, "ColumnHeader": "BaseAdditif2" },
+                { "ColName": "BaseAdditif3", "Width": 200, "Visible": true, "ColumnHeader": "BaseAdditif3" },
+                { "ColName": "Proprietes", "Width": 200, "Visible": true, "ColumnHeader": "Proprietes" },
+                { "ColName": "Utilisations", "Width": 200, "Visible": true, "ColumnHeader": "Utilisations" },
+                { "ColName": "Couleur", "Width": 200, "Visible": true, "ColumnHeader": "Couleur" },
+                { "ColName": "Nuance", "Width": 200, "Visible": true, "ColumnHeader": "Nuance" },
+                { "ColName": "Densite", "Width": 200, "Visible": true, "ColumnHeader": "Densite" },
+                { "ColName": "DN", "Width": 200, "Visible": true, "ColumnHeader": "DN" },
+                { "ColName": "ClasseNGLI", "Width": 200, "Visible": true, "ColumnHeader": "ClasseNGLI" },
+                { "ColName": "IndiceRefraction", "Width": 200, "Visible": true, "ColumnHeader": "IndiceRefraction" },
+                { "ColName": "TempFusion", "Width": 200, "Visible": true, "ColumnHeader": "TempFusion" },
+                { "ColName": "TempCongelation", "Width": 200, "Visible": true, "ColumnHeader": "TempCongelation" },
+                { "ColName": "PointAniline", "Width": 200, "Visible": true, "ColumnHeader": "PointAniline" },
+                { "ColName": "PointEclair", "Width": 200, "Visible": true, "ColumnHeader": "PointEclair" },
+                { "ColName": "PointIgnition", "Width": 200, "Visible": true, "ColumnHeader": "PointIgnition" },
+                { "ColName": "PointAutoInflam", "Width": 200, "Visible": true, "ColumnHeader": "PointAutoInflam" },
+                { "ColName": "IndexVisco", "Width": 200, "Visible": true, "ColumnHeader": "IndexVisco" },
+                { "ColName": "Visco20", "Width": 200, "Visible": true, "ColumnHeader": "Visco20" },
+                { "ColName": "Visco", "Width": 200, "Visible": true, "ColumnHeader": "Visco" },
+                { "ColName": "ViscoTemp", "Width": 200, "Visible": true, "ColumnHeader": "ViscoTemp" },
+                { "ColName": "ViscoBis", "Width": 200, "Visible": true, "ColumnHeader": "ViscoBis" },
+                { "ColName": "ViscoBisTemp", "Width": 200, "Visible": true, "ColumnHeader": "ViscoBisTemp" },
+                { "ColName": "ViscoTer", "Width": 200, "Visible": true, "ColumnHeader": "ViscoTer" },
+                { "ColName": "ViscoTerTemp", "Width": 200, "Visible": true, "ColumnHeader": "ViscoTerTemp" },
+                { "ColName": "WlfA1", "Width": 200, "Visible": true, "ColumnHeader": "WlfA1" },
+                { "ColName": "WlfB1", "Width": 200, "Visible": true, "ColumnHeader": "WlfB1" },
+                { "ColName": "WlfC1", "Width": 200, "Visible": true, "ColumnHeader": "WlfC1" },
+                { "ColName": "WlfA2", "Width": 200, "Visible": true, "ColumnHeader": "WlfA2" },
+                { "ColName": "WlfB2", "Width": 200, "Visible": true, "ColumnHeader": "WlfB2" },
+                { "ColName": "WlfC2", "Width": 200, "Visible": true, "ColumnHeader": "WlfC2" },
+                { "ColName": "WlfTg0", "Width": 200, "Visible": true, "ColumnHeader": "WlfTg0" },
+                { "ColName": "WlfUg", "Width": 200, "Visible": true, "ColumnHeader": "WlfUg" },
+                { "ColName": "GuptaAlpha", "Width": 200, "Visible": true, "ColumnHeader": "GuptaAlpha" },
+                { "ColName": "MasseMol", "Width": 200, "Visible": true, "ColumnHeader": "MasseMol" },
+                { "ColName": "DureeVie", "Width": 200, "Visible": true, "ColumnHeader": "DureeVie" },
+                { "ColName": "DureeVieTemp", "Width": 200, "Visible": true, "ColumnHeader": "DureeVieTemp" },
+                { "ColName": "PressVap1", "Width": 200, "Visible": true, "ColumnHeader": "PressVap1" },
+                { "ColName": "PressVapTemp1", "Width": 200, "Visible": true, "ColumnHeader": "PressVapTemp1" },
+                { "ColName": "PressVap2", "Width": 200, "Visible": true, "ColumnHeader": "PressVap2" },
+                { "ColName": "PressVapTemp2", "Width": 200, "Visible": true, "ColumnHeader": "PressVapTemp2" },
+                { "ColName": "PressVap3", "Width": 200, "Visible": true, "ColumnHeader": "PressVap3" },
+                { "ColName": "PressVapTemp3", "Width": 200, "Visible": true, "ColumnHeader": "PressVapTemp3" },
+                { "ColName": "TensionVapeur", "Width": 200, "Visible": true, "ColumnHeader": "TensionVapeur" },
+                { "ColName": "TensionVapeurTemp", "Width": 200, "Visible": true, "ColumnHeader": "TensionVapeurTemp" },
+                { "ColName": "VcmTml", "Width": 200, "Visible": true, "ColumnHeader": "VcmTml" },
+                { "ColName": "VcmRml", "Width": 200, "Visible": true, "ColumnHeader": "VcmRml" },
+                { "ColName": "VcmCvcm", "Width": 200, "Visible": true, "ColumnHeader": "VcmCvcm" },
+                { "ColName": "TensionSurface", "Width": 200, "Visible": true, "ColumnHeader": "TensionSurface" },
+                { "ColName": "Kf", "Width": 200, "Visible": true, "ColumnHeader": "Kf" },
+                { "ColName": "PerteEvaporation", "Width": 200, "Visible": true, "ColumnHeader": "PerteEvaporation" },
+                { "ColName": "PerteEvapoTemp", "Width": 200, "Visible": true, "ColumnHeader": "PerteEvapoTemp" },
+                { "ColName": "PerteEvapoDuree", "Width": 200, "Visible": true, "ColumnHeader": "PerteEvapoDuree" },
+                { "ColName": "SepHuile", "Width": 200, "Visible": true, "ColumnHeader": "SepHuile" },
+                { "ColName": "SepHuileTemp", "Width": 200, "Visible": true, "ColumnHeader": "SepHuileTemp" },
+                { "ColName": "SepHuileDuree", "Width": 200, "Visible": true, "ColumnHeader": "SepHuileDuree" },
+                { "ColName": "DocTech", "Width": 200, "Visible": true, "ColumnHeader": "DocTech" },
+                { "ColName": "Couple", "Width": 200, "Visible": true, "ColumnHeader": "Couple" },
+                { "ColName": "Temperature", "Width": 200, "Visible": true, "ColumnHeader": "Temperature" },
+                { "ColName": "TemperatureB", "Width": 200, "Visible": true, "ColumnHeader": "TemperatureB" },
+                { "ColName": "Duree", "Width": 200, "Visible": true, "ColumnHeader": "Duree" },
+                { "ColName": "Vibration", "Width": 200, "Visible": true, "ColumnHeader": "Vibration" },
+                { "ColName": "Bruit", "Width": 200, "Visible": true, "ColumnHeader": "Bruit" },
+                { "ColName": "Vitesse", "Width": 200, "Visible": true, "ColumnHeader": "Vitesse" },
+                { "ColName": "Purete", "Width": 200, "Visible": true, "ColumnHeader": "Purete" },
+                { "ColName": "Charge", "Width": 200, "Visible": true, "ColumnHeader": "Charge" },
+                { "ColName": "Radiation", "Width": 200, "Visible": true, "ColumnHeader": "Radiation" },
+                { "ColName": "ResistanceChim", "Width": 200, "Visible": true, "ColumnHeader": "ResistanceChim" },
+                { "ColName": "Oxydation", "Width": 200, "Visible": true, "ColumnHeader": "Oxydation" },
+                { "ColName": "ResistanceEau", "Width": 200, "Visible": true, "ColumnHeader": "ResistanceEau" },
+                { "ColName": "StableMaleabilte", "Width": 200, "Visible": true, "ColumnHeader": "StableMaleabilte" },
+                { "ColName": "StableStockage", "Width": 200, "Visible": true, "ColumnHeader": "StableStockage" },
+                { "ColName": "IndexNeutra", "Width": 200, "Visible": true, "ColumnHeader": "IndexNeutra" },
+                { "ColName": "MHL", "Width": 200, "Visible": true, "ColumnHeader": "MHL" },
+                { "ColName": "Conserv", "Width": 200, "Visible": true, "ColumnHeader": "Conserv" },
+                { "ColName": "ConservH", "Width": 200, "Visible": true, "ColumnHeader": "ConservH" },
+                { "ColName": "Failure", "Width": 200, "Visible": true, "ColumnHeader": "Failure" },
+                { "ColName": "W", "Width": 200, "Visible": true, "ColumnHeader": "W" },
+                { "ColName": "Temp7", "Width": 200, "Visible": true, "ColumnHeader": "Temp7" },
+                { "ColName": "Pmax", "Width": 200, "Visible": true, "ColumnHeader": "Pmax" },
+                { "ColName": "Pmin", "Width": 200, "Visible": true, "ColumnHeader": "Pmin" },
+                { "ColName": "TauxSalissure", "Width": 200, "Visible": true, "ColumnHeader": "TauxSalissure" },
+                { "ColName": "TypeFiltre", "Width": 200, "Visible": true, "ColumnHeader": "TypeFiltre" },
+                { "ColName": "Filtration", "Width": 200, "Visible": true, "ColumnHeader": "Filtration" },
+                { "ColName": "Solvant", "Width": 200, "Visible": true, "ColumnHeader": "Solvant" },
+                { "ColName": "ProdNC", "Width": 200, "Visible": true, "ColumnHeader": "ProdNC" },
+                { "ColName": "Dyna", "Width": 200, "Visible": true, "ColumnHeader": "Dyna" },
+                { "ColName": "CapaCharge", "Width": 200, "Visible": true, "ColumnHeader": "CapaCharge" },
+                { "ColName": "Divers", "Width": 200, "Visible": true, "ColumnHeader": "Divers" },
+                { "ColName": "SKF", "Width": 200, "Visible": true, "ColumnHeader": "SKF" },
+                { "ColName": "BARDEN", "Width": 200, "Visible": true, "ColumnHeader": "BARDEN" },
+                { "ColName": "MPB", "Width": 200, "Visible": true, "ColumnHeader": "MPB" },
+                { "ColName": "NMB", "Width": 200, "Visible": true, "ColumnHeader": "NMB" },
+                { "ColName": "RMB", "Width": 200, "Visible": true, "ColumnHeader": "RMB" },
+                { "ColName": "FAFNIR", "Width": 200, "Visible": true, "ColumnHeader": "FAFNIR" },
+                { "ColName": "GRW", "Width": 200, "Visible": true, "ColumnHeader": "GRW" },
+                { "ColName": "GMN", "Width": 200, "Visible": true, "ColumnHeader": "GMN" },
+                { "ColName": "NSK", "Width": 200, "Visible": true, "ColumnHeader": "NSK" },
+                { "ColName": "NHBB", "Width": 200, "Visible": true, "ColumnHeader": "NHBB" },
+                { "ColName": "NTN", "Width": 200, "Visible": true, "ColumnHeader": "NTN" },
+                { "ColName": "MKL", "Width": 200, "Visible": true, "ColumnHeader": "MKL" },
+                { "ColName": "Observations", "Width": 200, "Visible": true, "ColumnHeader": "Observations" },
+                { "ColName": "DateCodification", "Width": 200, "Visible": true, "ColumnHeader": "DateCodification" },
+                { "ColName": "DateModif", "Width": 200, "Visible": true, "ColumnHeader": "DateModif" },
+                { "ColName": "UserModif", "Width": 200, "Visible": true, "ColumnHeader": "UserModif" },
+                { "ColName": "Etat", "Width": 200, "Visible": true, "ColumnHeader": "Etat" },
+                { "ColName": "IndiceClassement", "Width": 200, "Visible": true, "ColumnHeader": "IndiceClassement" },
+                */
+            ];
+        var DG_QUERY_TAG = "GetHuiles";
+        var DG_TABLE_NAME = "Huiles";
+
+    </script>
+
+
+    <script src="Scripts/bootstrap.js"></script>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.2.1.js"></script>
+    <script src="js/dg.js"></script>
+    <link href="css/_csModal.css" rel="stylesheet" />
+  <!-- <script src="Scripts/bootstrap.js"></script>
+   <script src="Scripts/bootstrap.min.js"></script>
+       <link href="Content/bootstrap.css" rel="stylesheet" />
+       <link href="Content/bootstrap.min.css" rel="stylesheet" />
+--> 
+ 
+    <script>
+        $(function () {
+            $("#ColOpt").load("ColOpt.html");
+            $("#HuilesModal").load("HuilesModal.html");
+         });
+    </script>
+
+
+    <div id="HuilesModal"></div>
+    <div id="ColOpt"></div>
+
+
+    <div style="margin: 80px 10px 20px 25px;  width:90%">
+
+        <div id="DG_HEADER" style="margin: 5px 10px 20px 10px; height:40px;  ">
+            <table style="width:700px; padding-bottom: 20px; padding-top:20px; ">
+                <tbody>
+                    <tr>
+
+                        <td>
+                            <div class="input-group">
+                                <input type="text" id="DG_SEARCH_KEY" class="form-control" placeholder="Recherche..." aria-label="Recherche..">
+                                <span class="input-group-btn">
+                                    <button id="DG_SEARCH_BTN" class="btn btn-secondary" type="button">Go!</button>
+                                </span>
+                            </div>
+
+                        </td>
+
+                        <td align="right">
+                            <label style="margin-right:10px">dans</label>
+                        </td>
+                        <td>
+                            <div class="input-group" id="DG_COLUMN_SEARCH">
+                            </div>
+                        </td>
+
+                        <td>
+                            <label>ColOption: </label>
+                            <button id="ModBtnOpenColOption" class="btn btn-secondary" type="button">Opt</button>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div id="DG_CONTAINER">
+
+        </div>
+
+
+        <div id="DG_FOOTER" style="width: 1000px; margin: 5px 5px 5px 10px;">
+
+            <table class="table table-hover thead-light" style="border:2px solid black; border-radius:15px; width:1000px; margin: 5px 5px 5px 10px;">
+                <tr>
+                    <td align="left">
+                        <label>Afficher </label>
+                        <select id="DG_PAGE_SIZE">
+                            <option>5</option>
+                            <option>10</option>
+                            <option>100</option>
+                            <option>1000</option>
+                        </select>
+                        <label> ligne par page</label>
+                    </td>
+
+                    <td align="left" style="background-color:#d8d0d0">
+                        <label>Total Page Nbr:</label>
+                        <label id="DG_TOT_PAGE_NBR"></label>
+                    </td>
+
+                    <td align="right">
+                        <input type="text" id="DG_CUR_PAGE_NBR" name="pin" maxlength="4" size="4" />
+                        <button id="DG_CHANGE_CUR_PAGE_NBR" name="GetHuiles" value="GetHuiles">Go</button>
+                    </td>
+
+                    <td align="right" style="background-color:#d8d0d0">
+                        <label>Total Ligne Nbr:</label>
+                        <label id="DG_TOT_LINE_NBR"></label>
+                    </td>
+
+                </tr>
+            </table>
+
+
+            <div align="right">
+            </div>
+        </div>
+
+    </div>
+
+   
+
+
+
+
+</body>
+</html>

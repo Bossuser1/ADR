@@ -1,0 +1,177 @@
+    #titre {
+    background-color: #116b7e;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    background-color: #193648;
+    margin-top: 5px;
+    }
+    /**************Test Formulaire Design*************************/
+    .main {
+    width: 1100px;
+    margin: 70px auto;
+    border: 3px solid #116b7e;
+    border-radius: 10px;
+    background-color: #fffaf0;
+    border-left: 40px solid #116b7e;
+    }
+    #ModalBtnOK {
+        width: 90%;
+        display: block;
+        margin: 0 auto;
+        background-color: #4CAF50;
+    }
+
+    .info {
+    width: 100%;
+    padding: 8px;
+    background-color: #116b7e;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+    }
+
+    *{
+    padding:0px;
+    margin:0px;
+    }
+    .form-box {
+    padding: 25px;
+    width:25%;
+    }
+
+    label {
+    font-size: 15px;
+    font-family: sans-serif;
+    float:left;
+    }
+    #Menu ul li {
+    display: block;
+    color: white;
+    padding: 15px 10px;
+    border-bottom: 1px solid white;
+    border-left: 5px solid white;
+    }
+
+    #Menu {
+    width: 220px;
+    height: 100%;
+    position: fixed;
+    background-color: #193648;
+    }
+
+    div ul li:hover {
+    background: #116b7e;
+    color: white;
+    transition: linear all 0.40s;
+    margin-left: 10px;
+    }
+    .inp, .txtArea {
+        padding: 5px;
+        margin-top: 3px;
+        margin-bottom: 10px;
+        border: 1px solid #116b7e;
+        border-radius: 5px;
+        font-weight: bold;
+        border-left: 20px solid #116b7e;
+    }
+
+    .txtArea {
+        resize: none;
+        height: 80px;
+    }
+
+    .sub-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(#193648, #116b7e);
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    }
+
+    .sub-btn:focus {
+    outline: none;
+    }
+
+    .sub-btn:hover {
+    background: linear-gradient(#193648, #116b7e);
+    transition: all ease-out 0.5s;
+    }
+    .txtArea{
+    margin-right:10px;
+    }
+
+
+    .line-separator {
+    height: 5px;
+    background: #299090;
+    border-bottom: 1px solid #313030;
+    width: 1000px;
+    }
+
+    .panel-title a{
+        
+    }
+    .container{
+        overflow:auto;
+        max-height:1000px;
+
+    }
+	
+	.inpsmall, .txtArea {
+        padding: 1%;
+        margin-top: 3px;
+        margin-bottom: 5px;
+        border: 1px solid #116b7e;
+        border-radius: 5px;
+        font-weight: bold;
+        border-left: 20px solid #116b7e;
+    }
+	
+	.inpmidlle.txtArea {
+        padding: 1%;
+        margin-top: 3px;
+        margin-bottom: 10px;
+        border: 1px solid #116b7e;
+        border-radius: 5px;
+        font-weight: bold;
+        border-left: 20px solid #116b7e;
+    }
+
+	
+	/*------------------------------------------------------*/
+	
+.groupement {
+  position: relative;
+  background-color: gray;
+  font-weight: bold;
+  color: #116b7e;
+  text-align: center;
+  
+}
+
+.border-groupemet {
+  background-color: red;
+}
+
+.relative2 {
+  position: relative;
+  top: -20px;
+  left: 20px;
+  background-color: black;
+  width: 500px;
+}
+
+
+.fake {
+	color: white;
+ }

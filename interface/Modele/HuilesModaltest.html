@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> --!>
+</head>
+<body>
+
+        <link rel="stylesheet" href="C:/Users/BOT\Desktop/application design/css_form_mod.css">
+
+    <!--
+
+    ******************************************************************************************************************************-->
+    <div id="ModalQueryTag" QueryTag="GetHuilesById">
+    </div>
+
+    <!-- The Modal -->
+
+    <button id="ModalBtnClose" class="close">&times;</button>
+    <div class="container">
+        <h2>Accordion Example</h2>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Données Bases</a>
+                    </h4>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <table>
+                            <tr>
+                                <td>
+                                    IdHuile
+                                    <input type="text" class="inp" id="IdHuiles" placeholder="IdHuiles">
+                                </td>
+                                <td>
+                                    Code ADR
+                                    <input type="text" class="inp" id="CodeAdr" placeholder="CodeAdr">
+                                </td>
+
+                                <td>
+                                    Nom
+                                    <input type="text" class="inp" id="Nom" placeholder="Nom">
+                                </td>
+                                <td>
+                                    Fabricant
+                                    <input type="text" class="inp" id="Fabricant" placeholder="Fabricant">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    NormeMIL
+                                    <input type="text" class="inp" id="NormeMIL" placeholder="NormeMIL">
+                                </td>
+                                <td>
+                                    NormeAIR
+                                    <input type="text" class="inp" id="NormeAIR" placeholder="NormeAIR">
+                                </td>
+                                <td>
+                                    NormeDTD
+                                    <input type="text" class="inp" id="NormeDTD" placeholder="NormeDTD">
+                                </td>
+                                <td>
+                                    NormeOTAN
+                                    <input type="text" class="inp" id="NormeOTAN" placeholder="NormeOTAN">
+                                </td>
+                        </table>
+                    </div>
+                </div>
+            </div>
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Données Techniques</a>
+                    </h4>
+                </div>
+                <div id="collapse2" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <table>
+                            <tr>
+                                <td>
+                                    DureeVie
+                                    <input type="text" class="inp" id="DureeVie" aria-describedby="basic-addon3">
+                                </td>
+                                <td>
+                                    DureeVieTemp
+                                    <input type="text" class="inp" id="DureeVieTemp" aria-describedby="basic-addon3">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    PressVap1
+                                    <input type="text" class="inp" id="PressVap1" aria-describedby="basic-addon3">
+                                </td>
+                                <td>
+                                    PressVap2
+                                    <input type="text" class="inp" id="PressVap2" aria-describedby="basic-addon3">
+                                </td>
+                                <td>
+                                    PressVap3
+                                    <input type="text" class="inp" id="PressVap3" aria-describedby="basic-addon3">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    PressVapTemp1
+                                    <input type="text" class="inp" id="PressVapTemp1" aria-describedby="basic-addon3">
+                                </td>
+                                <td>
+                                    PressVapTemp2
+                                    <input type="text" class="inp" id="PressVapTemp2" aria-describedby="basic-addon3">
+                                </td>
+                                <td>
+                                    PressVapTemp3
+                                    <input type="text" class="inp" id="PressVapTemp3" aria-describedby="basic-addon3">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    PerteEvaporation
+                                    <input type="text" class="inp" id="PerteEvaporation" aria-describedby="basic-addon3">
+                                </td>
+                                <td>
+                                    PerteEvapoTemp
+                                    <input type="text" class="inp" id="PerteEvapoTemp" aria-describedby="basic-addon3">
+                                </td>
+                                <td>
+                                    PerteEvapoDuree
+                                    <input type="text" class="inp" id="PerteEvapoDuree" aria-describedby="basic-addon3">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    VcmTml
+                                    <input type="text" class="inp" id="VcmTml" aria-describedby="basic-addon3">
+                                </td>
+                                <td>
+                                    VcmRml
+                                    <input type="text" class="inp" id="VcmRml" aria-describedby="basic-addon3">
+                                </td>
+                                <td>
+                                    VcmCvcm
+                                    <input type="text" class="inp" id="VcmCvcm" aria-describedby="basic-addon3">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    TauxSalissure
+                                    <input type="text" class="inp" id="TauxSalissure" aria-describedby="basic-addon3">
+                                </td>
+                                <td>
+                                    IndexNeutra
+                                    <input type="text" class="inp" id="IndexNeutra" aria-describedby="basic-addon3">
+                                </td>
+                                <td>
+                                    MHL
+                                    <input type="text" class="inp" id="MHL" aria-describedby="basic-addon3">
+                                </td>
+                                <td>
+                                    ProdNC
+                                    <input type="text" class="inp" id="ProdNC" aria-describedby="basic-addon3">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Solvant
+                                    <input type="text" class="inp" id="Solvant" aria-describedby="basic-addon3">
+                                </td>
+                                <td>
+                                    Filtration
+                                    <input type="text" class="inp" id="Filtration" aria-describedby="basic-addon3">
+                                </td>
+                                <td>
+                                    TypeFiltre
+                                    <input type="text" class="inp" id="TypeFiltre" aria-describedby="basic-addon3">
+                                </td>
+                                <td>
+                                    Pmin
+                                    <input type="text" class="inp" id="Pmin" aria-describedby="basic-addon3">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Pmax
+                                    <input type="text" class="inp" id="Pmax" aria-describedby="basic-addon3">
+                                </td>
+                                <td>
+                                    Temp7
+                                    <input type="text" class="inp" id="Temp7" aria-describedby="basic-addon3">
+                                </td>
+                                <td>
+                                    W
+                                    <input type="text" class="inp" id="W" aria-describedby="basic-addon3">
+                                </td>
+
+                                <td>
+                                    Failure
+                                    <input type="text" class="inp" id="Failure" aria-describedby="basic-addon3">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Conserv
+                                    <input type="text" class="inp" id="Conserv" aria-describedby="basic-addon3">
+                                </td>
+                                <td>
+                                    <input class="txtArea" name="Divers" id="Divers" placeholder="Divers...."></input>
+                                </td>
+                                <td>
+                                    <textarea class="txtArea" name="DocTech" id="DocTech" placeholder="DocTech...."></textarea>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Critéres techniques</a>
+                    </h4>
+                </div>
+                <div id="collapse3" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <table>
+                            <tr>
+                                <td>
+                                    Pureté
+                                    <input type="text" class="inp" id="Purete" aria-describedby="basic-addon3">
+                                </td>
+                                <td>
+                                    Charge
+                                    <input type="text" class="inp" id="Charge" aria-describedby="basic-addon3">
+                                </td>
+                                <td>
+                                    Radiation
+                                    <input type="text" class="inp" id="Radiation" aria-describedby="basic-addon3">
+                                </td>
+                                <td>
+                                    Vibration
+                                    <input type="text" class="inp" id="Vibration" aria-describedby="basic-addon3">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Resistance Chim
+                                    <input type="text" class="inp" id="ResistanceChim" aria-describedby="basic-addon3">
+                                </td>
+                                <td>
+                                    Resistance Eau
+                                    <input type="text" class="inp" id="ResistanceEau" aria-describedby="basic-addon3">
+                                </td>
+                                <td>
+                                    Température haute
+                                    <input type="text" class="inp" id="Temperature" aria-describedby="basic-addon3">
+                                </td>
+                                <td>
+                                    Température Basse
+                                    <input type="text" class="inp" id="TemperatureB" aria-describedby="basic-addon3">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Stable Maléabilte
+                                    <input type="text" class="inp" id="StableMaleabilte" aria-describedby="basic-addon3">
+                                </td>
+                                <td>
+                                    Stable de Stockage
+                                    <input type="text" class="inp" id="StableStockage" aria-describedby="basic-addon3">
+                                </td>
+                                <td>
+                                    Vitesse
+                                    <input type="text" class="inp" id="Vitesse" aria-describedby="basic-addon3">
+                                </td>
+                                <td>
+                                    Bruit
+                                    <input type="text" class="inp" id="Bruit" aria-describedby="basic-addon3">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Durée
+                                    <input type="text" class="inp" id="Duree" aria-describedby="basic-addon3">
+                                </td>
+                                <td>
+                                    Couple
+                                    <input type="text" class="inp" id="Couple" aria-describedby="basic-addon3">
+                                </td>
+                                <td>
+                                    Oxydation
+                                    <input type="text" class="inp" id="Oxydation" aria-describedby="basic-addon3">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">Validation</a>
+                        </h4>
+                    </div>
+                    <div id="collapse4" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <button id="ModalBtnOK" type="button" class="btn btn-primary">Valider</button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+</body>
+</html>
+<script src="C:/Users/BOT\Desktop/application design/script/script_mod.js"></script>

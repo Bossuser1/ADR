@@ -1,0 +1,433 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Scripts/jquery-3.2.1.js"></script>
+    <script src="js/dg.js"></script>
+	<!--
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	-->
+</head>
+<body>
+    
+   <style>
+
+
+       #titre {
+           background-color: #116b7e;
+           padding: 20px;
+           color: white;
+           text-align: center;
+           font-size: 30px;
+           background-color: #193648;
+           margin-top: 5px;
+       }
+       /**************Test Formulaire Design*************************/
+       .main {
+           width: 1100px;
+           margin: 70px auto;
+           border: 3px solid #116b7e;
+           border-radius: 10px;
+           background-color: #fffaf0;
+           border-left: 40px solid #116b7e;
+       }
+
+       .info {
+           width: 100%;
+           padding: 8px;
+           background-color: #116b7e;
+           font-size: 20px;
+           font-weight: bold;
+           text-align: center;
+           color: #fff;
+           text-shadow: 1px 1px 2px #000;
+       }
+
+       *{
+           padding:0px;
+           margin:0px;
+       }
+       .form-box {
+           padding: 25px;
+           width:25%;
+       }
+
+       label {
+           font-size: 15px;
+           font-family: sans-serif;
+           float:left;
+       }
+       #Menu ul li {
+           display: block;
+           color: white;
+           padding: 15px 10px;
+           border-bottom: 1px solid white;
+           border-left: 5px solid white;
+       }
+
+       #Menu {
+           width: 220px;
+           height: 100%;
+           position: fixed;
+           background-color: #193648;
+       }
+
+       div ul li:hover {
+           background: #116b7e;
+           color: white;
+           transition: linear all 0.40s;
+           margin-left: 10px;
+       }
+       .inp, #msg-box {
+           padding: 5px;
+           margin-top: 3px;
+           margin-bottom: 10px;
+           border: 1px solid #116b7e;
+           border-radius: 5px;
+           font-weight: bold;
+           border-left: 20px solid #116b7e;    
+       
+       }
+
+       #msg-box {
+           resize: none;
+           height: 80px;
+       }
+
+       .sub-btn {
+           width: 100%;
+           padding: 10px;
+           margin-top: 5px;
+           border: none;
+           border-radius: 5px;
+           background: linear-gradient(#193648, #116b7e);
+           color: #fff;
+           font-size: 12px;
+           cursor: pointer;
+           display: block;
+           margin: 0 auto;
+       }
+       
+           .sub-btn:focus {
+               outline: none;
+           }
+
+           .sub-btn:hover {
+               background: linear-gradient(#193648, #116b7e);
+               transition: all ease-out 0.5s;
+           }
+       .txtArea{
+           margin-right:10px;
+       }
+
+
+       .line-separator {
+           height: 5px;
+           background: #299090;
+           border-bottom: 1px solid #313030;
+           width: 1000px;
+       }
+
+
+   </style>
+                                                                                                                                                                        
+
+    <div id="ModalQueryTag" QueryTag="GetHuilesById">
+    </div>
+
+
+
+    <!-- The Modal -->
+    <div id="ModalWindow" class="modal">
+
+        <button id="ModalBtnClose" class="close">&times;</button>
+        <div id="titre">
+            <h1>Gestion Huiles3</h1>
+        </div>
+
+        <div id="Menu">
+            <ul>
+                <li class="selected"> <a href="#" id="DonneesBasesModal">Données de base</a></li>
+                <li> <a href="#" id="DonneesPhysiqueModal">Données physique</a></li>
+                <li> <a href="#" id="DonneesTechniqueModal">Données technique</a></li>
+                <li> <a href="#" id="CriteresTechniqueModal">Critéres technique</a></li>
+                <li> <a href="#" id="CodificationConcurrentModal">Codification des concurrents</a></li>
+            </ul>
+        </div>
+
+        <script>
+             $(document).ready(function () {
+                 $(document).on("click", "a", function () {
+                     var id = $(this).attr('id');
+                     switch (id) {
+                         case "DonneesPhysiqueModal": localStorage.setItem("test", "DonneesPhysiqueModal"); $("#Form").load("DonneesPhysiqueModal.html"); break;
+                         case "DonneesBasesModal": localStorage.setItem("test", "DonneesBasesModal"); $("#Form").load("DonneesBasesModal.html"); break;
+                         case "DonneesTechniqueModal": localStorage.setItem("test", "DonneesTechniqueModal"); $("#Form").load("DonneesTechniqueModal.html"); break;
+                         case "CriteresTechniqueModal": localStorage.setItem("test", "CriteresTechniqueModal"); $("#Form").load("CriteresTechniqueModal.html"); break;
+                         case "CodificationConcurrentModal": localStorage.setItem("test", "CodificationConcurrentModal"); $("#Form").load("CodificationConcurrentModal.html"); break;
+                         case "RoulNorm": localStorage.setItem("test", "RoulNorm"); $("#panel-body").load("RoulNorm.html"); break;
+                         case "Test5": localStorage.setItem("test", "Test5"); $("#panel-body").load("Test5.html"); break;
+                         case "Test7": localStorage.setItem("test", "Test7"); $("#panel-body").load("Test7.html"); break;
+                         case "Test8": localStorage.setItem("test", "Test8"); $("#panel-body").load("Test8.html"); break;
+                         case "Test9": localStorage.setItem("test", "Test9"); $("#panel-body").load("Test9.html"); break;
+                         case "Test10": localStorage.setItem("test", "Test10"); $("#panel-body").load("Test10.html"); break;
+                             //test = $(this);
+                             alert("bj" + id);
+                     }
+
+                 });
+
+             });
+           
+                if (performance.navigation.type == 1) {
+                        var Lien = localStorage.getItem("test") + ".html";
+                        $("#Form").load(Lien);
+                    }
+
+        </script>
+
+
+
+
+
+        <div class="main">
+            <div id="Form">
+               
+    </div>
+
+    </div>
+        <link rel="stylesheet" href="C:/Users/BOT\Desktop/application design/css_form_mod.css">
+		
+		<script src="C:/Users/BOT\Desktop/application design/js/script1.js"></script>
+    <!--
+	<script src="js/jscript1.js"></script>		
+		<link rel="stylesheet" href="css/style.css">
+    ******************************************************************************************************************************-->
+    <div id="ModalQueryTag" QueryTag="GetHuilesById">
+    </div>
+
+    <!-- The Modal -->
+
+    <button id="ModalBtnClose" class="close">&times;</button>
+    <div class="container" id="containername" >
+        <h2>Accordion Example</h2>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Données Bases</a>
+                    </h4>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                            <TABLE BORDER=0 WIDTH=100%  HEIGHT=100% valign=top ALIGN=RIGHT BGCOLOR="#FFFFEE" BORDERCOLOR="#000000"
+                            BORDERCOLORLIGHT="#BBCCDD" BORDERCOLORDARK="#007755" CELLSPACING=2>
+                     <caption valign=top align=left>    <font size=2>  </caption>
+                            <!------------------------------------------------------------------>
+                            <! DEF D'UN TABLEAU>
+                            <TR> <TD COLSPAN=2 > <font size=2> 
+                                                <table noborder>
+                                                <tr> <td> <font size=2> Un tableau s'obtient avec : </td>
+                                                     <td> <font size=2> <input type="text" class="inp" id="nom" placeholder="nom" size="25"></td> 
+                                                </tr>
+                                                <tr> <td> <font size=2> Une ligne est balis&eacute;e avec :</td> 
+                                                     <td> <font size=2> &lt;/tr&gt; </td> 
+                                                     <td> <font size=2> &lt;td&gt;</tr>
+                                                <tr> <td> <font size=2> Chaque donn&eacute;e est entre :</td> 
+                                                     <td> <font size=2> <input type="text" class="inp" id="fabricant" placeholder="fabricant"> </td> 
+                                                     <td> <font size=2> &lt;/td&gt; ou &lt;th&gt; 
+                                                                        &lt;/th&gt; pour les en-t&ecirc;tes</tr>                       
+                                                <tr> <td colspan=3> <font size=2> 
+                                                      Il est possible d'imbriquer des tableaux.
+                                                      Le tableau "couleur des ombres" ci-dessous
+                                                      est un tableau imbriqu&eacute; 
+                                                      dans un tableau couleur, lui m&ecirc;me imbriqu&eacute;
+                                                      dans ce tableau.</td></tr>
+                                                </table>
+                                 <TD valign=top> <font size=2> <FORM>
+                                        <SELECT name="Etat" size="4">
+                                        <OPTION>Huile 
+                                        <OPTION>Huile 2
+                                        <OPTION>Huile de coude
+                                        <OPTION>Annulation ADR
+                                        <OPTION>Supression fabricant
+                                        </SELECT>
+                                        </FORM>
+                                </TD>
+                            </TR>
+                            <!------------------------------------------------------------------>
+                            <! BORDURES D'UN TABLEAU>
+                                  
+                            <!------------------------------------------------------------------>
+                            <! BORDURES D'UN TABLEAU>
+							        <TR> <TD COLSPAN=1 align="right"> <font size=2> 
+                                                <table noborder>
+                                                <tr align="left"> <td> <font size=2> Recon max. </td>
+                                                     <td align="left"> <font size=2> <input type="text" class="inp" id="nom" placeholder="nom" size="5"></td>
+													 <td> <font size=2> Limite max. </td> 
+                                                     <td> <font size=2> <input type="text" class="inp" id="limitemax" placeholder="limitemax" size="5"></td>  	 													 
+                                                </tr>
+                                                <tr> <td> <font size=2> Une ligne est balis&eacute;e avec :</td> 
+                                                     <td> <font size=2> &lt;/tr&gt; </td> 
+                                                     <td> <font size=2> &lt;td&gt;</tr>
+                                                <tr> <td> <font size=2> Recon min.</td> 
+                                                     <td> <font size=2> <input type="text" class="inp" id="reconmax" placeholder="reconmax" size="5"> </td> 
+                                                     <td> <font size=2> Limite min. </td> 
+													 <td> <font size=2> <input type="text" class="inp" id="limitemin" placeholder="limitemax" size="5">													 
+                                                <tr> <td colspan=3> <font size=2> 
+                                                      Il est possible d'imbriquer d.</td></tr>
+                                                </table>
+										<TD COLSPAN=1 align="right"> <font size=2> 
+										<TD COLSPAN=1 align="right"> <font size=2> 
+                                                <table noborder>
+                                                <tr align="left"> <td> <font size=2> MIL.  </td>
+                                                     <td> <font size=2> <input type="text" class="inp" id="reconmax" placeholder="reconmax" size="5"></td>
+													 <td> <font size=2> AIR. </td> 
+                                                     <td> <font size=2> <input type="text" class="inp" id="limitemax" placeholder="limitemax" size="5"></td>  	 													 
+                                                </tr>
+                                                <tr> <td> <font size=2> Une ligne est balis&eacute;e avec :</td> 
+                                                     <td> <font size=2> &lt;/tr&gt; </td> 
+                                                     <td> <font size=2> &lt;td&gt;</tr>
+                                                <tr> <td> <font size=2> OTAN. </td> 
+                                                     <td> <font size=2>  <input type="text" class="inp" id="reconmax" placeholder="reconmax" size="5"></td> 
+                                                     <td> <font size=2> DTD. </td> 
+													 <td> <font size=2> <input type="text" class="inp" id="limitemin" placeholder="limitemax" size="5">													 
+                                                <tr> <td colspan=3> <font size=2> 
+                                                      Il est possible</td></tr>
+                                                </table>
+                            </TR>
+                            <!-- <TR> <TD COLSPAN=3> <table noborder> -->
+                                                <!-- <tr> <td> <font size=2> Les bordures s'obtiennent avec : </td> -->
+                                                     <!-- <td> <font size=2> &lt;table border&gt;</td>  -->
+                                                     <!-- <td> <font size=2> &lt;/table&gt; Par d&eacute;faut c'est NoBorder qui est actif</td>  -->
+                                                     <!-- </tr> -->
+                                                <!-- <tr> <td> <font size=2> </td>  -->
+                                                     <!-- <td> <font size=2> &lt;table border=5 &gt; </td>  -->
+                                                     <!-- <td> <font size=2> &lt;/table&gt; pour dimensionner le cadre. -->
+                                                     <!-- </tr> -->
+                                                <!-- <tr> <td> <font size=2> Le quadrillage est contr&ocirc;l&eacute; par :</td>  -->
+                                                     <!-- <td> <font size=2> &lt;table cellspacing=2&gt; </td>  -->
+                                                     <!-- <td> <font size=2> &lt;/table&gt;   -->
+                                                     <!-- </tr>  -->
+                                                <!-- <tr> <td> <font size=2> Les ombres sont g&eacute;r&eacute;es par les couleurs. -->
+                                                                        <!-- Voir plus loin...                       -->
+                                                <!-- </table> -->
+                                  <!-- </TD> </TR> -->
+                            <!------------------------------------------------------------------>
+                            <! DIMENSIONS D'UN TABLEAU>
+                            <TR> <TD ROWSPAN=2 ALIGN=CENTER><font size=2>
+												<table noborder>
+                                                <tr> <td> <font size=2>  </td>
+                                                     <td> <font size=2> base h1</td> 
+                                                     <td> <font size=2> <input type="text" class="inp" id="baseh1" placeholder="baseh1" > </td> </tr>
+												<tr> <td> <font size=2>  </td>
+                                                     <td> <font size=2> base h2</td> 
+                                                     <td> <font size=2> <input type="text" class="inp" id="baseh2" placeholder="baseh2" > </td> </tr>
+                                         <tr> <td> <font size=2>  </td>
+                                                     <td> <font size=2> base h3</td> 
+                                                     <td> <font size=2> <input type="text" class="inp" id="baseh3" placeholder="baseh3" > </td> </tr>
+                                                </table>  </TD> 
+                                 <TD COLSPAN=2 ALIGN=MIDDLE> <font size=2> 
+                                                <table noborder>
+                                                <tr> <td> <font size=2>  </td>
+                                                     <td> <font size=2> base a1</td> 
+                                                     <td> <font size=2> <input type="text" class="inp" id="basea1" placeholder="basea1" > </td> </tr>
+												<tr> <td> <font size=2>  </td>
+                                                     <td> <font size=2> base a2</td> 
+                                                     <td> <font size=2> <input type="text" class="inp" id="basea2" placeholder="basea2" > </td> </tr>
+                                         <tr> <td> <font size=2>  </td>
+                                                     <td> <font size=2> base a3</td> 
+                                                     <td> <font size=2> <input type="text" class="inp" id="basea3" placeholder="basea3" > </td> </tr>
+                                                </table> </TD> </TR>
+                            <!------------------------------------------------------------------>
+                            <! DIMENSIONS DES CELLULES>
+                            <TR> <TD COLSPAN=2> <font size=2> 
+                                                <table noborder>
+                                                </table>  
+                                  </TD> </TR>
+                            <!------------------------------------------------------------------>
+                            <! COULEURS>
+                            <!-- <TR> <TD COLSPAN=3> -->
+                                 <!-- <! tableau de quatre colonnes dans les 3 COLONNES FUSIONNEES > -->
+                                 <!-- <table border=2 bordercolor=green width=100% bgcolor=yellow> -->
+                                 <!-- <tr>    <td > <font size=2> Couleur du fond <br> -->
+                                              <!-- &lt;table bgcolor=yellow&gt;</td> -->
+                                         <!-- <td bgcolor="#CCFFCC"> <font size=2> Couleur d'une cellule <br> -->
+                                              <!-- &lt;td bgcolor="#CCFFCC"&gt;</td> -->
+                                         <!-- <td> <font size=2> Couleur du quadrillage <br> -->
+                                              <!-- &lt;table border bordercolor=green&gt;</td> -->
+                                         <!-- <td> <! tableau de niveau 3> -->
+                                              <!-- <table width=100% bgcolor="#FFCCCC" -->
+                                                     <!-- border=3 bordercolorlight=white  bordercolordark =black>  -->
+                                              <!-- <tr> <td> <!debut de niveau 3> -->
+                                              <!-- <font size=2> Couleur des ombres <br> -->
+                                              <!-- &lt;table border bordercolorlight=white&gt; <br> -->
+                                              <!-- bordercolordark=black&gt;   </td>  </tr> <! fin de niveau 3> -->
+                                              <!-- </table> </td> <tr> <! fin de niveau 2> -->
+                                 <!-- </table> -->
+                                 <!-- </TD> -->
+                            <!-- </TR>       -->
+							<TR><td colspan=3 align=center> <font size=2> 
+                                         FUSION DE 2 COLONNES  &lt;td colspan=2&gt;
+                            </TD> </TR>
+							<TR><td colspan=3 align=center> <font size=2> 
+                                    Propriété:  <input type="text" class="inp" id="propriete" placeholder="propriete" size="45">
+                            </TD> </TR>
+
+							<TR><td colspan=3 align=center> <font size=2> 
+                                    Utilisation:  <input type="text" class="inp" id="utilisation" placeholder="utilisation" size="45">
+                            </TD> </TR>
+
+							<TR ><td colspan=3 align=center> <font size=2> 
+                                    Observation:  <input type="text" class="inp" id="observation" placeholder="observation" size="45">
+                            </TD> </TR>							
+                            <!------------------------------------------------------------------>
+                            <!-- <! ALIGNEMENT HORIZONTAL> -->
+                            <!-- <TR> <TD ALIGN=LEFT> <font size=2> GAUCHE <br>  -->
+                                                 <!-- &lt;td align=left&gt; GAUCHE &lt;/td&gt. </TD>  -->
+                                 <!-- <TD ALIGN=CENTER> <font size=2>CENTRE <br> -->
+                                                 <!-- &lt;td align=left&gt; GAUCHE &lt;/td&gt.  </TD>  -->
+                                 <!-- <TD ALIGN=RIGHT> <font size=2>DROITE <br> -->
+                                                 <!-- &lt;td align=right&gt; DROITE &lt;/td&gt.</TD> </TR> -->
+                            <!------------------------------------------------------------------>
+                            <! ALIGNEMENT VERTICAL>
+                            <!-- <TR> <TD VALIGN=TOP HEIGHT=60> <font size=2>HAUT <br> -->
+                                                 <!-- &lt;td valign=top&gt; HAUT &lt;/td&gt.</TD>  -->
+                                 <!-- <TD VALIGN=MIDDLE > <font size=2>MILIEU <br> -->
+                                                    <!-- &lt;td valign=middle&gt; MILIEU &lt;/td&gt.</TD>  -->
+                                 <!-- <TD VALIGN=BOTTOM> <font size=2>BAS <br> -->
+                                                    <!-- &lt;td valign=bottom&gt; BAS &lt;/td&gt.</TD> </TR> -->
+                            <!------------------------------------------------------------------>
+                            <! FUSION >
+                            <TR> <TD></TD><td colspan=2 align=center> <font size=2> 
+                                           FUSION DE 2 COLONNES  &lt;td colspan=2&gt;
+                                 </TD> </TR>
+                            <TR> <TD rowspan=3> <font size=2> FUSION DE 2 LIGNES <br>
+                                                              &lt;td rowspan=2&gt;</TD> </TR>
+                            <TR> <TD> <font size=2> La fusion est active juste derri&egrave;re la balise
+                                      </TD><td></TD> </TR>
+									  
+									  
+                            <!-- <TR> <TD></TD> -->
+                                 <!-- <TD> <font size=2> Il est possible de cumuler les fusions des lignes -->
+                                                    <!-- et des colonnes. <br>Vous avez un exemple plus haut &agrave;  -->
+                                                    <!-- la ligne "dimensions"</TD> </TR> -->
+													
+                            <!-- <TR> <TD> <font size=2>On peut inclure des objets dans les cellules :</TD>  -->
+                                 <!-- <TD ALIGN=CENTER VALIGN=TOP> <font size=2> Des images : </TD> -->
+                                 <!-- <TD> <font size=2>... et des liens : <br> -->
+                                      <!-- <a href="../somrhtml.htm" target="_top">Cours HTML</a> <br> -->
+                                      <!-- </TD></TR> -->
+
+                     </TABLE> <br><br><br><br><br><br><br>
+                                     <br clear=all>
+                    </div>                   
+                </div>
+            </div>
+        </div>
+	</div>
+</body>
+</html>
