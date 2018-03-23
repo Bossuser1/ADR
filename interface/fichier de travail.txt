@@ -1,0 +1,133 @@
+function DG_SetFormProp() {
+
+    var FormName = "ModalWindow";
+    var TableName = DG_TABLE_NAME;
+
+    $.ajax({
+        url: "../DBAWebService.asmx/GetTabInfoByName",
+        type: "POST",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        data: "{tableName:'" + TableName + "'}",
+
+        success: function (response) {
+            tabInfo = response.d;
+            $.each(tabInfo.Columns, function (index, ColInfo) {
+                var id = ColInfo.COLUMN_NAME;
+                if ($('#' + id).length > 0) {
+                    var htmlNode = $("#" + FormName).find('#' + id);
+                   
+                    if (htmlNode !== undefined) {
+                        var info_supp = ColInfo.MS_DESCRIPTION + ".#."
+                            + "[" + TableName + "]." + id
+                            + "<p>Type: " + ColInfo.DATA_TYPE
+                            + " Nullable:" + ColInfo.IS_NULLABLE
+                            + " Auto Inc: " + ColInfo.IS_AUTO_INCRIMENT
+                            + " Max: " + ColInfo.CHARACTER_MAXIMUM_LENGTH
+                            + " Pre Key: " + ColInfo.IS_PRIMARY_KEY;
+                        htmlNode.attr('infoSupp', info_supp);
+
+                        if (ColInfo.IS_NULLABLE === false) {
+                            //htmlNode.css("background-color", "#FFF9C4"); /*$("#" + $FormName).find('#' + id).css("background-color", "#FFF9C4"); */
+                            htmlNode.css("border", "1px solid  rgb(160,160,255)");
+                        }
+
+                        if (ColInfo.IS_AUTO_INCRIMENT || ColInfo.IS_PRIMARY_KEY) {
+                            htmlNode.prop('readonly', true);
+                            htmlNode.css("background-color", "#FFF9C4");
+                            htmlNode.css("border", "1px solid   #c3c3c3");
+                            htmlNode.css("color", "#938f9c");
+                        }
+                    }
+                }
+            });
+        },
+        error: function (err) { alert(err); }
+    });
+}   
+
+
+
+
+function DG_ExecQuery($TableName, $QueryType, $ListDataCond) {
+    console.log($TableName + " ----- " + $QueryType + " - " + $ListDataCond.length);
+    $.ajax({
+        url: "../DBAWebService.asmx/ExecQuery",
+        type: "POST",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        data: " {tableName :'" + $TableName + "', queryType :'" + $QueryType + "', listparam :" + JSON.stringify($ListDataCond) + "}",
+        success: function (response) { var dicos = response.d;console.log("dicos:" + dicos);},
+        error: function (err) {alert(err);}
+    });
+}
+
+
+function DG_Create() {
+    //console.log("DG_Create:");
+    var ListDataCond = [];
+    var obj = { "_key": "1", "_val": "2" }
+    ListDataCond.push(obj);
+
+    $.ajax({
+        url: "../DBAWebService.asmx/GetData",
+        type: "POST",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        data: " { listdata :" + JSON.stringify(ListDataCond) + ", qryTag:'" + DG_QUERY_TAG + "'}",
+        success: function (response) {            
+            Listdatalist = response.d;
+
+            if (Listdatalist.length === 0) { console.log("  HUPPS .... à traiter ce cas !!!!datalist.length:" + datalist.length); }
+            if (Listdatalist.length > 0)
+            {
+               
+            }
+            DG_Load(); 
+        },
+        error: function (err) { alert(err.statusCode); }
+    });
+}
+
+
+
+function LoadForm($FormLoad, $FormCondition, $QueryTag) {
+    var ListDataCond = [];
+    $('#' + $FormCondition).find('td').each(function (index, element) {
+        var input = $(this);
+        var key = input.attr('columnName');
+        var val = element.innerText.trim();
+
+        if (key !== undefined && val !== "") { var obj = { "_key": key, "_val": val }; ListDataCond.push(obj);  }
+    });
+
+    $.ajax({
+        url: "../DBAWebService.asmx/GetData",
+        type: "POST",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        data: " { listdata :" + JSON.stringify(ListDataCond) + ", qryTag:'" + $QueryTag+"'}",
+        success: function (response) {
+            var datalist = [];
+            datalist = response.d;
+            if (datalist.length === 0) { console.log("  HUPPS .... à traiter ce cas !!!!datalist.length:" + datalist.length); }
+            if (datalist[0].List.length === 0) { console.log("  HUPPS .... à traiter ce cas !!!!datalist[0].List.length:"); }
+            //console.clear();
+            if (datalist.length > 0 && datalist[0].List.length > 0) {
+                $.each(datalist[0].List, function (index, data) {
+                    //console.log("  _key:" + data._key.trim() + "  _val:" + data._val);
+                    var element = $('#' + $FormLoad).find('#' + data._key.trim());
+                    if ($(element).length > 0) {
+                        if ($(element).attr('type') === "checkbox") { val = $(element).prop('checked', data._val); }
+                        if ($(element).attr('type') === "radio") { val = $(element).prop('checked', data._val); }
+                        if ($(element).attr('type') === "text") { $(element).val(data._val);  }
+                        if ($(element).attr('type') === "select") { $(element).val(data._val); }
+                        if ($(element).attr('type') === "textarea") { $(element).val(data._val); alert("bjr1");}
+                   
+                    }
+                });
+            }
+        },
+        error: function (err) { alert(err.statusCode); }
+    });
+}
