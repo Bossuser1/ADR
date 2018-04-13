@@ -1,0 +1,17 @@
+/* Source and licensing information for the line(s) below can be found at https://www.alcen.com/sites/all/modules/contrib/google_analytics_et/js/google_analytics_et.js. */
+Drupal.behaviors.googleAnalyticsET={attach:function(context){if(typeof _gaq=="undefined"&&typeof ga=="undefined"){return;}
+var settings=Drupal.settings.googleAnalyticsETSettings;delete settings.selectors.debug;var defaultOptions={label:'',value:0,noninteraction:false,options:[]};var s=new Array();for(var i=0;i<settings.selectors.length;i++){s[i]=settings.selectors[i].selector;}
+jQuery.each(s,function(i,val){jQuery(settings.selectors[i].selector).once('GoogleAnalyticsET').bind(settings.selectors[i].event,function(event){settings.selectors[i]=jQuery.extend(defaultOptions,settings.selectors[i]);trackEvent(jQuery(this),i,settings.selectors[i].options,settings.selectors[i].category,settings.selectors[i].action,settings.selectors[i].label,settings.selectors[i].value,settings.selectors[i].noninteraction)});});}}
+function trackEvent($obj,id,options,category,action,opt_label,opt_value,opt_noninteraction){var href=$obj.attr('href')==undefined?false:String($obj.attr('href'));if(typeof this.options=='undefined'){this.options={};}
+this.options[id]=options;category=category=='!text'?String($obj.text()):(category=='!href'?href:(category=='!currentPage'?String(window.location.href):String(category)));action=action=='!text'?String($obj.text()):(action=='!href'?href:(action=='!currentPage'?String(window.location.href):String(action)));opt_label=opt_label=='!text'?String($obj.text()):(opt_label=='!href'?href:(opt_label=='!currentPage'?String(window.location.href):String(opt_label)));if(!category||!action){console.log("Google Analytics Event Tracking: category and action must be set.")
+return;}
+if(this.options[id].trackOnce==true){if(typeof this.options[id].times=='undefined'){this.options[id].times=1;}
+else{return;}}
+console.log(id);if(opt_label=='!test'||Drupal.settings.googleAnalyticsETSettings.settings.debug){debugEvent($obj,category,action,opt_label,opt_value,opt_noninteraction);}
+else if(typeof _gaq!='undefined'){_gaq.push(['_trackEvent',String(category),String(action),String(opt_label),Number(opt_value),Boolean(opt_noninteraction)]);}
+else{ga('send',{'hitType':'event','eventCategory':String(category),'eventAction':String(action),'eventLabel':String(opt_label),'eventValue':Number(opt_value),'nonInteraction':Boolean(opt_noninteraction)});}}
+function debugEvent($obj,category,action,opt_label,opt_value,opt_noninteraction){if(!("console"in window)){alert(category+' '+action+' '+opt_label+' '+opt_value);}
+else{var trackerObject={category:category,action:action,opt_label:opt_label,opt_value:opt_value,opt_noninteraction:opt_noninteraction,$object:$obj}
+console.log(trackerObject);}};;
+/* Source and licensing information for the above line(s) can be found at https://www.alcen.com/sites/all/modules/contrib/google_analytics_et/js/google_analytics_et.js. */
+;/*})'"*/
